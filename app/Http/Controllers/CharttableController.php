@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\helpers;
-use Bllim\Datatables\Facade\Datatables;
 use Carbon\Carbon;
-use ConsoleTVs\Charts\Classes\Fusioncharts\Chart;
 use Faker\Provider\Image;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;

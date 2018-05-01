@@ -23,15 +23,12 @@
                     <table class="table table-bordered datatable" id="table-4">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Title</th>
                             <th>Category</th>
                             <th>Tag Name</th>
-                            <th>Comment</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Image</th>
-                            <th>Create Time</th>
                         </tr>
                         </thead>
                         <tbody>

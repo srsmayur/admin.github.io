@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\DataTableSql;
 use App\User;
 use App\helpers;
+
+
+use Bllim\Datatables\Datatables;
 use Carbon\Carbon;
 use Faker\Provider\Image;
 use Illuminate\Support\Facades\Input;
@@ -21,6 +26,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
 use MongoDB\BSON\Javascript;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use \Bllim\Datatables\Facade;
 
 class CharttableController extends Controller
 {
@@ -32,8 +38,8 @@ class CharttableController extends Controller
     }
     public function readdata()
     {
-        $charttbl = DB::table('tbl_comment')->get();
-        return Datatables::class;
-       // return Response::json(array("data" =>  $charttbl, "options" => [],"files" => [],"draw" => 16,"recordsTotal" => $charttbl->count(),"recordsFiltered" => $charttbl->count()));
+        $charttbl = DB::table('tbl_comment')->select(array('title','category','tag_name','start_date','end_date','image'));
+
+        return Facade\Datatables::of($charttbl)->make();
     }
 }

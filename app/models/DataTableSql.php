@@ -1,14 +1,16 @@
 <?php
 
+namespace App\Models;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Response;
 use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
-
-class DataTableSql extends \Eloquent {
+class DataTableSql extends Eloquent {
     
     
         public $query;
@@ -75,8 +77,10 @@ class DataTableSql extends \Eloquent {
             return DB::Select(db::raw($query)->toSql());
         }
         protected  function  selectprc(){
-            $pdo = DB::connection($this->connection)->getPdo();
-            DB::connection()->logQuery($this->query,array());
+            DB::enableQueryLog();
+            $pdo = DB::connection()->getPdo();
+            DB::connection()->getQueryLog($this->query,array());
+           // DB::connection()->logQuery($this->query,array());
             return $pdo->query($this->query);
         }
         
